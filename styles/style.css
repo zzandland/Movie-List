@@ -1,0 +1,113 @@
+body {
+  background: #20262E;
+  padding: 20px;
+  font-family: Helvetica;
+}
+
+#app, .app {
+  background: #fff;
+  transition: all 0.2s;
+  height: 100%;
+  border: 2px solid #e1e1e1;
+}
+
+#title {
+  background-color: #f7f7f7;
+  padding: 5px;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+#title h2 {
+  margin-left: 30px;
+}
+
+#list {
+  margin: 10px 40px;
+  display: flex;
+  display: column;
+}
+
+#list ul {
+  padding: 0;
+  margin: 20px 0;
+  border: 1px grey solid;
+  border-bottom: none;
+  height: 100%;
+  width: 100%;
+  list-style-type: none;
+}
+
+#list ul li {
+  padding: 20px 40px;
+  border-bottom: 1px grey solid;
+}
+
+#newMovie {
+  margin: 10px 40px;
+  margin-top: 10%;
+}
+
+#newMovie input:first-of-type {
+  width: 300px;
+}
+
+#result-negative {
+  margin: 40px;
+}
+
+#topbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#topbar div {
+  margin-left: 40px;
+}
+
+#topbar div button {
+  height: 53px;
+  background-color: white;
+  border: solid 2px #f2f2f2;
+}
+
+#search {
+  margin: 10px 40px;
+}
+
+#search input:first-of-type {
+  width: 300px;
+}
+
+input {
+  padding: 8px;
+  border: 1px #e1e1e1 solid;
+  background-color: white;
+  border-radius: 5px 0 0 5px;
+}
+
+.active {
+  background-color: #6ba64c !important;
+  color: white;
+}
+
+.submit {
+  padding: 8px 15px; 
+  border-left: none;
+  border-radius: 0 5px 5px 0px;
+}
+
+li button {
+  float: right;
+  width: 80px;
+  background-color: #6ba64c;
+  border: 1px solid white;
+  color: white;
+  padding: 5px;
+  transform: translateY(-4px);
+}
+
+#unwatched-button {
+  background-color: #efefef;
+  color: black;
+}
