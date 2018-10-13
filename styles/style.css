@@ -13,6 +13,11 @@ body {
   margin: 0.3em;
 }
 
+.movie-information div input {
+  vertical-align: middle;
+  margin: 0 3px 1px 3px;
+}
+
 #app, .app {
   background: #fff;
   transition: all 0.2s;
