@@ -4,6 +4,15 @@ body {
   font-family: Helvetica;
 }
 
+.movie-detailbox {
+  margin: 20px 5%;
+  display: flex;
+}
+
+.movie-detailbox p, .movie-information div {
+  margin: 0.3em;
+}
+
 #app, .app {
   background: #fff;
   transition: all 0.2s;
@@ -31,7 +40,6 @@ body {
   padding: 0;
   margin: 20px 0;
   border: 1px grey solid;
-  border-bottom: none;
   height: 100%;
   width: 100%;
   list-style-type: none;
@@ -39,7 +47,6 @@ body {
 
 #list ul li {
   padding: 20px 40px;
-  border-bottom: 1px grey solid;
 }
 
 #newMovie {
@@ -98,16 +105,11 @@ input {
 }
 
 li button {
+  background-color: white;
   float: right;
   width: 80px;
-  background-color: #6ba64c;
   border: 1px solid white;
-  color: white;
   padding: 5px;
   transform: translateY(-4px);
 }
 
-#unwatched-button {
-  background-color: #efefef;
-  color: black;
-}
