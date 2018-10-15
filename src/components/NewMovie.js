@@ -5,7 +5,7 @@ class NewMovie extends Component {
   addMovieOnClick() {
     let newMovieInput = document.querySelector('#newMovieInput');
     if (newMovieInput.value !== '') {
-      this.props.addMovie(newMovieInput.value);
+      this.props.fetchDetails(newMovieInput.value);
     }
     newMovieInput.value = '';
   }
@@ -14,7 +14,7 @@ class NewMovie extends Component {
     if (event.key === 'Enter') {
       let newMovieInput = document.querySelector('#newMovieInput');
       if (newMovieInput.value !== '') {
-        this.props.addMovie(newMovieInput.value);
+        this.props.fetchDetails(newMovieInput.value);
       }
       newMovieInput.value = '';
     }

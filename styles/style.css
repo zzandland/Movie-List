@@ -7,6 +7,7 @@ body {
 .movie-detailbox {
   margin: 20px 5%;
   display: flex;
+  justify-content: space-between;
 }
 
 .movie-detailbox p, .movie-information div {
@@ -16,6 +17,14 @@ body {
 .movie-information div input {
   vertical-align: middle;
   margin: 0 3px 1px 3px;
+}
+
+.movie-image {
+  margin-left: 30px;
+} 
+
+.movie-image img {
+  height: 200px;  
 }
 
 #app, .app {
@@ -51,7 +60,12 @@ body {
 }
 
 #list ul li {
+  border-top: 1px #f7f7f7 solid;
   padding: 20px 40px;
+}
+
+#list ul li:first-of-type {
+  border-top: none;
 }
 
 #newMovie {

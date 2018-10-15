@@ -1,14 +1,18 @@
 import Redux from 'redux';
 
-const movieListReducer = (state=[{ title: 'Star Wars', year: 1977, runtime: 125, metascore: 90, imdbRating: 8.7, watched: false, visibility: false}], action) => {
+const movieListReducer = (
+  state = [], action
+) => {
   switch (action.type) {
+
     case 'ADD_MOVIE':
+      const retrievedInfo = action.movie[0];
       const newMovieObj = {
-        title: action.movie,
-        year: targetMovie.year,
-        runtime: undefined,
-        metascore: undefined,
-        imdbRating: undefined,
+        title: retrievedInfo.title,
+        year: parseInt(retrievedInfo.release_date.slice(0, 4)),
+        rating: retrievedInfo.vote_average,
+        overview: retrievedInfo.overview,
+        image: `https://image.tmdb.org/t/p/w200/${retrievedInfo.poster_path}`,
         search: true,
         watched: false,
         visibility: false
@@ -30,16 +34,9 @@ const movieListReducer = (state=[{ title: 'Star Wars', year: 1977, runtime: 125,
     case 'TOGGLE_WATCHED':
       let targetMovieIndex = state.slice().map(movie => movie.title).indexOf(action.movie);
       let targetMovie = state.slice()[targetMovieIndex];
-      let toggledMovie = {
-        title: targetMovie.title,
-        year: targetMovie.year,
-        runtime: targetMovie.runtime,
-        metascore: targetMovie.metascore,
-        imdbRating: targetMovie.imdbRating,
-        search: targetMovie.search,
-        watched: !targetMovie.watched,
-        visibility: targetMovie.visibility
-      }
+      let toggledMovie = Object.assign({}, targetMovie, {
+        watched: !targetMovie.watched
+      });
       let updatedMovieList = state.slice();
       updatedMovieList.splice(targetMovieIndex, 1, toggledMovie);
       return updatedMovieList;
@@ -47,16 +44,9 @@ const movieListReducer = (state=[{ title: 'Star Wars', year: 1977, runtime: 125,
     case 'TOGGLE_VISIBILITY':
       targetMovieIndex = state.slice().map(movie => movie.title).indexOf(action.movie);
       targetMovie = state.slice()[targetMovieIndex];
-      toggledMovie = {
-        title: targetMovie.title,
-        year: targetMovie.year,
-        runtime: targetMovie.runtime,
-        metascore: targetMovie.metascore,
-        imdbRating: targetMovie.imdbRating,
-        search: targetMovie.search,
-        watched: targetMovie.watched,
+      toggledMovie = Object.assign({}, targetMovie, {
         visibility: !targetMovie.visibility
-      }
+      });
       updatedMovieList = state.slice();
       updatedMovieList.splice(targetMovieIndex, 1, toggledMovie);
       return updatedMovieList;

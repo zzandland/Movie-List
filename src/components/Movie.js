@@ -38,9 +38,8 @@ class Movie extends Component {
           <div className="movie-detailbox">
             <div className="movie-information">
               <p><strong>Year</strong>: {this.props.movie.year}</p>
-              <p><strong>Runtime</strong>: {this.props.movie.runtime}</p>
-              <p><strong>Metascore</strong>: {this.props.movie.metascore}</p>
-              <p><strong>imdbRating</strong>: {this.props.movie.imdbRating}</p>
+              <p><strong>Rating</strong>: {this.props.movie.rating}</p>
+              <p><strong>Overview</strong>: {this.props.movie.overview}</p>
               { !this.props.movie.watched &&
                 <div>
                   <span><strong>Watched</strong>: </span>
@@ -52,6 +51,7 @@ class Movie extends Component {
               }
             </div>
             <div className="movie-image">
+              <img src={this.props.movie.image} />
             </div>
           </div>
         </div>
