@@ -20,6 +20,10 @@ const movieListReducer = (
       const newMovieList = [...state.slice(), newMovieObj];
       return newMovieList;
 
+    case 'UPDATE_MOVIE':
+      return state;
+
+
     case 'SEARCH_MOVIE':
       const searchList = state.slice()
       for (let movie of searchList) {
