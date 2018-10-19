@@ -5,24 +5,13 @@ const movieListReducer = (
 ) => {
   switch (action.type) {
 
-    case 'ADD_MOVIE':
-      const retrievedInfo = action.movie[0];
-      const newMovieObj = {
-        title: retrievedInfo.title,
-        year: parseInt(retrievedInfo.release_date.slice(0, 4)),
-        rating: retrievedInfo.vote_average,
-        overview: retrievedInfo.overview,
-        image: `https://image.tmdb.org/t/p/w200/${retrievedInfo.poster_path}`,
-        search: true,
-        watched: false,
-        visibility: false
-      }
-      const newMovieList = [...state.slice(), newMovieObj];
-      return newMovieList;
-
-    case 'UPDATE_MOVIE':
-      return state;
-
+    case 'UPDATE_MOVIE_LIST':
+      return action.movies.map(movieObj => {
+        return Object.assign({}, movieObj, {
+          search: true,
+          visibility: false
+        })
+      })
 
     case 'SEARCH_MOVIE':
       const searchList = state.slice()
@@ -36,27 +25,24 @@ const movieListReducer = (
       return searchList;
 
     case 'TOGGLE_WATCHED':
-      let targetMovieIndex = state.slice().map(movie => movie.title).indexOf(action.movie);
-      let targetMovie = state.slice()[targetMovieIndex];
-      let toggledMovie = Object.assign({}, targetMovie, {
-        watched: !targetMovie.watched
+      let watchedMovie = Object.assign({}, action.movie, {
+        watched: !action.movie.watched
       });
-      let updatedMovieList = state.slice();
-      updatedMovieList.splice(targetMovieIndex, 1, toggledMovie);
-      return updatedMovieList;
+      let updatedListWithWatched = state.slice();
+      updatedListWithWatched.splice(state.length - action.movie.id, 1, watchedMovie);
+      return updatedListWithWatched;
 
     case 'TOGGLE_VISIBILITY':
-      targetMovieIndex = state.slice().map(movie => movie.title).indexOf(action.movie);
-      targetMovie = state.slice()[targetMovieIndex];
-      toggledMovie = Object.assign({}, targetMovie, {
-        visibility: !targetMovie.visibility
+      let detailedMovie = Object.assign({}, action.movie, {
+        visibility: !action.movie.visibility
       });
-      updatedMovieList = state.slice();
-      updatedMovieList.splice(targetMovieIndex, 1, toggledMovie);
-      return updatedMovieList;
+      let updatedListWithDetail = state.slice();
+      updatedListWithDetail.splice(state.length - action.movie.id, 1, detailedMovie);
+      return updatedListWithDetail;
 
     default:
       return state;
+      
   }
 }
 

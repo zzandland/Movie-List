@@ -1,8 +1,15 @@
-const addMovie = (movie) => {
-	return {
-  	type: 'ADD_MOVIE',
-    movie: movie
+import fetchMovies from './fetchMovies.js';
+
+const saveMovie = (movies) => {
+  return (dispatch) => {
+    return fetch('http://localhost:3000/movies/api', {
+      method: 'POST',
+      body: movies
+    })
+      .then((result) => {
+        dispatch(fetchMovies());
+      })
   }
 }
 
-export default addMovie;
+export default saveMovie;

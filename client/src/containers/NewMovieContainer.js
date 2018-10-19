@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import NewMovie from '../components/NewMovie.js';
 import fetchDetails from '../actions/fetchDetails.js';
+import saveMovie from '../actions/movieList.js';
 
 const mapStateToProps = (state) => {
   return {
@@ -10,8 +11,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchDetails: movie => {
-      dispatch(fetchDetails(movie));
+    saveMovie: movie => {
+      dispatch(saveMovie(movie));
     }
   }
 }

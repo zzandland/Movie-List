@@ -1,26 +1,14 @@
 import React, { Component } from 'react';
 
-class Movie extends Component {
+const Movie = (props) => {
 
-  toggleVisibility() {
-    console.log(this.props.movie);
-    const movieTitle = this.props.movie.title;
-    this.props.toggleVisibility(movieTitle);
-  }
-
-  toggleWatched() {
-    const movieTitle = this.props.movie.title;
-    this.props.toggleWatched(movieTitle);
-  }
-
-  render() {
-    if (!this.props.movie.visibility) {
+    if (!props.movie.visibility) {
       return (
         <li className="movie">
-          {this.props.movie.title}
+          {props.movie.title}
           <button
             className="active"
-            onClick={this.toggleVisibility.bind(this)}>
+            onClick={() => { props.toggleVisibility(props.movie) }}>
             More
           </button>
         </li>
@@ -29,35 +17,34 @@ class Movie extends Component {
       return (
         <div>
           <li className="movie active">
-            {this.props.movie.title}
+            {props.movie.title}
             <button
-              onClick={this.toggleVisibility.bind(this)}>
+              onClick={() => { props.toggleVisibility(props.movie) }}>
               Close
             </button>
           </li>
           <div className="movie-detailbox">
             <div className="movie-information">
-              <p><strong>Year</strong>: {this.props.movie.year}</p>
-              <p><strong>Rating</strong>: {this.props.movie.rating}</p>
-              <p><strong>Overview</strong>: {this.props.movie.overview}</p>
-              { !this.props.movie.watched &&
+              <p><strong>Year</strong>: {props.movie.year}</p>
+              <p><strong>Rating</strong>: {props.movie.rating}</p>
+              <p><strong>Overview</strong>: {props.movie.overview}</p>
+              { !props.movie.watched &&
                 <div>
                   <span><strong>Watched</strong>: </span>
                   <input
                   type="radio"
-                  onChange={this.toggleWatched.bind(this)}
+                  onChange={() => { props.toggleWatched(props.movie) }}
                   ></input>
                 </div>
               }
             </div>
             <div className="movie-image">
-              <img src={this.props.movie.image} />
+              <img src={props.movie.image} />
             </div>
           </div>
         </div>
       )
     }
-  }
 
 }
 

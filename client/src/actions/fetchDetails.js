@@ -1,6 +1,5 @@
 import fetch from 'cross-fetch';
 import addMovie from './movieList.js';
-import TMDB_API_KEY from '../config/tmdb.js';
 
 const requestDetails = () => {
   return {

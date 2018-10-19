@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import MovieList from './../components/MovieList.js';
+import fetchMovies from '../actions/fetchMovies.js';
 
 const mapStateToProps = (state) => {
   return {
@@ -10,8 +11,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    toggleWatched: movie => {
-      dispatch(toggleWatched(movie));
+    fetchMovies: () => {
+      dispatch(fetchMovies());
     }
   }
 }

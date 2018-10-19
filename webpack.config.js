@@ -1,4 +1,5 @@
 const path = require('path');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 module.exports = {
   entry: './client/src/index.js',
@@ -16,5 +17,8 @@ module.exports = {
         }
       } 
     ] 
-  }
+  },
+  plugins: [
+    new FriendlyErrorsWebpackPlugin() 
+  ]
 }

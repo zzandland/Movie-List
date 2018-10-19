@@ -3,6 +3,10 @@ import Movie from './Movie.js';
 import MovieContainer from '../containers/MovieContainer.js';
 
 class MovieList extends Component {
+
+  componentWillMount() {
+    this.props.fetchMovies();
+  }
   
   checkSearchListLength() {
     if (this.props.sortStatus === 'watched') {
